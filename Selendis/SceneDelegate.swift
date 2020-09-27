@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Selendis
 //
-//  Created by user179838 on 9/27/20.
+//  Created by foxness on 9/27/20.
 //
 
 import UIKit
