@@ -18,12 +18,12 @@ struct DataPayload: Decodable {
 }
 
 struct DataPair: Decodable {
-    let name: String
-    let data: DataItem
+    let id: String
+    let dataItem: DataItem
     
     enum CodingKeys: String, CodingKey {
-        case name
-        case data
+        case id = "name"
+        case dataItem = "data"
     }
 }
 
@@ -52,16 +52,6 @@ enum DataItem: Decodable {
         
         throw DecodingError.typeMismatch(DataItem.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Unknown DataItem type"))
     }
-
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.singleValueContainer()
-//        switch self {
-//        case .string(let x):
-//            try container.encode(x)
-//        case .innerItem(let x):
-//            try container.encode(x)
-//        }
-//    }
 }
 
 struct TextItem: Decodable {
