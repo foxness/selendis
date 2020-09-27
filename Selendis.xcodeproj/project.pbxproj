@@ -15,6 +15,7 @@
 		960CAB182521301800E5D22D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960CAB162521301800E5D22D /* LaunchScreen.storyboard */; };
 		960CAB21252132ED00E5D22D /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB20252132ED00E5D22D /* DataService.swift */; };
 		960CAB242521342800E5D22D /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB232521342800E5D22D /* Requests.swift */; };
+		960CAB2725213BDB00E5D22D /* DataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2625213BDB00E5D22D /* DataPayload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		960CAB192521301800E5D22D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		960CAB20252132ED00E5D22D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		960CAB232521342800E5D22D /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		960CAB2625213BDB00E5D22D /* DataPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPayload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				960CAB0F2521301700E5D22D /* ViewController.swift */,
 				960CAB20252132ED00E5D22D /* DataService.swift */,
 				960CAB232521342800E5D22D /* Requests.swift */,
+				960CAB2625213BDB00E5D22D /* DataPayload.swift */,
 				960CAB112521301700E5D22D /* Main.storyboard */,
 				960CAB142521301800E5D22D /* Assets.xcassets */,
 				960CAB162521301800E5D22D /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			files = (
 				960CAB102521301700E5D22D /* ViewController.swift in Sources */,
 				960CAB0C2521301700E5D22D /* AppDelegate.swift in Sources */,
+				960CAB2725213BDB00E5D22D /* DataPayload.swift in Sources */,
 				960CAB0E2521301700E5D22D /* SceneDelegate.swift in Sources */,
 				960CAB242521342800E5D22D /* Requests.swift in Sources */,
 				960CAB21252132ED00E5D22D /* DataService.swift in Sources */,

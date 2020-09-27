@@ -10,7 +10,7 @@ import Foundation
 class DataService {
     private static let DATA_ENDPOINT = "https://pryaniky.com/static/json/sample.json"
     
-    func getData(callback: @escaping (String?) -> Void) {
+    func getData(callback: @escaping (DataPayload?) -> Void) {
         if let dataUrl = URL(string: DataService.DATA_ENDPOINT) {
             Requests.get(url: dataUrl, completionHandler: { (data, response, error) in
                 if let error = error {
@@ -22,10 +22,12 @@ class DataService {
                    let httpresponse = response as? HTTPURLResponse,
                    Requests.isResponseOk(httpresponse) {
                     
-                    if let data = data {
-                        let str = String(data: data, encoding: .utf8)
+                    if let jsonData = data {
+                        let payload = try! JSONDecoder().decode(DataPayload.self, from: jsonData)
+                        //let data =
+                        //let str = String(data: data, encoding: .utf8)
                         //let str = String(decoding: data, as: UTF8.self)
-                        callback(str)
+                        callback(payload)
                     } else {
                         callback(nil)
                     }
