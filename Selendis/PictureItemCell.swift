@@ -16,6 +16,8 @@ class PictureItemCell: UITableViewCell, DataItemCell {
     
     private var picture: UIImage?
     
+    var hasPicture: Bool { picture != nil }
+    
     var item: DataItem? {
         didSet {
             guard let item = item as? PictureItem else {

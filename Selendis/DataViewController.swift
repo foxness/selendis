@@ -37,6 +37,18 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { items.count }
     
+    func downloadAndSetImage(for pictureCell: PictureItemCell, item: PictureItem) {
+        guard !pictureCell.hasPicture else { return }
+        guard let url = URL(string: item.url) else { return }
+        
+        downloader.downloadImage(url: url) { imageData in
+            guard let imageData = imageData else { return }
+            guard let image = UIImage(data: imageData) else { return }
+            
+            pictureCell.setPicture(image)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
         switch item.type {
@@ -49,18 +61,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         case .picture:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PictureItemCell.IDENTIFIER, for: indexPath) as? PictureItemCell {
                 cell.item = item
-                
-                if let pictureItem = item as? PictureItem, let url = URL(string: pictureItem.url) {
-                    
-                    downloader.downloadImage(url: url) { imageData in
-                        if let imageData = imageData {
-                            if let image = UIImage(data: imageData) {
-                                cell.setPicture(image)
-                            }
-                        }
-                    }
-                }
-                
+                downloadAndSetImage(for: cell, item: item as! PictureItem)
                 return cell
             }
             
