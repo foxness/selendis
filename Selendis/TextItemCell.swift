@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextItemCell: UITableViewCell {
+class TextItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "textItemCell"
     
     @IBOutlet weak var textView: UILabel!

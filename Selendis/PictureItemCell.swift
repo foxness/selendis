@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PictureItemCell: UITableViewCell {
+class PictureItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "pictureItemCell"
     
     @IBOutlet weak var textView: UILabel!
@@ -21,15 +21,4 @@ class PictureItemCell: UITableViewCell {
             textView.text = item.text
         }
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
 }
