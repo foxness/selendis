@@ -36,8 +36,8 @@ enum RawDataItem: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
-        if let x = try? container.decode(RawTextItem.self) {
-            self = .text(x)
+        if let x = try? container.decode(RawSelectorItem.self) {
+            self = .selector(x)
             return
         }
         
@@ -46,8 +46,8 @@ enum RawDataItem: Decodable {
             return
         }
         
-        if let x = try? container.decode(RawSelectorItem.self) {
-            self = .selector(x)
+        if let x = try? container.decode(RawTextItem.self) {
+            self = .text(x)
             return
         }
         

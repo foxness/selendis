@@ -44,11 +44,13 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
                 cell.item = item
                 return cell
             }
+            
         case .picture:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PictureItemCell.IDENTIFIER, for: indexPath) as? PictureItemCell {
                 cell.item = item
                 return cell
             }
+            
         case .selector:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SelectorItemCell.IDENTIFIER, for: indexPath) as? SelectorItemCell {
                 cell.item = item
