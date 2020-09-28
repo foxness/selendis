@@ -34,10 +34,8 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     func displayMessage(_ message: String) {
         print(message)
         
-        let alert = UIAlertController(title: "Вау!", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        let title = "Вау!"
+        displayAlert(title: title, message: message)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
