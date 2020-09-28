@@ -10,8 +10,7 @@ import UIKit
 class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    private let presenter = DataPresenter(dataService: NetworkDataService())
-    private let downloader = ImageDownloader()
+    private let presenter = DataPresenter(dataService: NetworkDataService(), downloader: ImageDownloader())
     
     private var items = [DataItem]()
     
@@ -21,16 +20,11 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         tableView.dataSource = self
         tableView.delegate = self
         presenter.attachView(self)
-        presenter.loadData()
+        presenter.viewDidLoad()
     }
     
     func displayData(_ dataList: [DataItem]) {
         items = dataList
-        
-//        // I'm 99% sure 'weak' is not needed but better safe than sorry
-//        DispatchQueue.main.async { [weak self] in
-//            self?.tableView.reloadData()
-//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
@@ -41,7 +35,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         guard !pictureCell.hasPicture else { return }
         guard let url = URL(string: item.url) else { return }
         
-        downloader.downloadImage(url: url) { imageData in
+        presenter.downloadImage(url: url) { imageData in
             guard let imageData = imageData else { return }
             guard let image = UIImage(data: imageData) else { return }
             

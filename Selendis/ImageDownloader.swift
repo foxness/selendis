@@ -7,9 +7,13 @@
 
 import Foundation
 
-class ImageDownloader {
+protocol BaseImageDownloader {
     typealias ImageCallback = (Data?) -> Void
     
+    func downloadImage(url: URL, callback: @escaping ImageCallback)
+}
+
+class ImageDownloader: BaseImageDownloader {
     private class Download: Operation {
         private let url: URL
         private let callback: ImageCallback

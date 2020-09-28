@@ -10,9 +10,11 @@ import Foundation
 class DataPresenter {
     private let dataService: DataService
     private weak var dataViewDelegate: DataViewDelegate?
+    private let downloader: BaseImageDownloader
     
-    init(dataService: DataService) {
+    init(dataService: DataService, downloader: BaseImageDownloader) {
         self.dataService = dataService
+        self.downloader = downloader
     }
     
     func attachView(_ delegate: DataViewDelegate) {
@@ -23,7 +25,7 @@ class DataPresenter {
         dataViewDelegate = nil
     }
     
-    func loadData() {
+    func viewDidLoad() {
         dataService.getData { [weak self] rawData in
             if let rawData = rawData {
                 let dataList = DataPresenter.rawDataToDataList(rawData)
@@ -32,6 +34,10 @@ class DataPresenter {
                 print("I couldn't get data for some reason")
             }
         }
+    }
+    
+    func downloadImage(url: URL, callback: @escaping BaseImageDownloader.ImageCallback) {
+        downloader.downloadImage(url: url, callback: callback)
     }
     
     private static func rawDataToDataList(_ raw: RawDataPayload) -> [DataItem] {
