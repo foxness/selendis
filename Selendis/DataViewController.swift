@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource {
+class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var items = [DataItem]()
@@ -18,6 +18,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
         presenter.attachView(self)
         presenter.loadData()
     }
@@ -56,6 +57,18 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         }
         
         fatalError("Unknown item type")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height: Int
+        
+        switch items[indexPath.row].type {
+        case .text: height = TextItemCell.HEIGHT
+        case .picture: height = PictureItemCell.HEIGHT
+        case .selector: height = SelectorItemCell.HEIGHT
+        }
+        
+        return CGFloat(height)
     }
 }
 

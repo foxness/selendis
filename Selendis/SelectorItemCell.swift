@@ -9,6 +9,7 @@ import UIKit
 
 class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIPickerViewDataSource {
     static let IDENTIFIER = "selectorItemCell"
+    static let HEIGHT = 160
     
     @IBOutlet weak var pickerView: UIPickerView!
     

@@ -9,6 +9,7 @@ import UIKit
 
 class TextItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "textItemCell"
+    static let HEIGHT = 50
     
     @IBOutlet weak var textView: UILabel!
     

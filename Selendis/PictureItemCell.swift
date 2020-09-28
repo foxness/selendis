@@ -9,6 +9,7 @@ import UIKit
 
 class PictureItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "pictureItemCell"
+    static let HEIGHT = 160
     
     @IBOutlet weak var textView: UILabel!
     
