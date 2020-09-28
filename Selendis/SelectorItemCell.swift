@@ -7,10 +7,13 @@
 
 import UIKit
 
-class SelectorItemCell: UITableViewCell, DataItemCell {
+class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIPickerViewDataSource {
     static let IDENTIFIER = "selectorItemCell"
     
-    @IBOutlet weak var textView: UILabel!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    var selectedId: Int?
+    var variants: [String]?
     
     var item: DataItem? {
         didSet {
@@ -18,7 +21,24 @@ class SelectorItemCell: UITableViewCell, DataItemCell {
                 return
             }
             
-            textView.text = "i am selector"
+            selectedId = item.selectedId
+            variants = item.variants
+            
+            pickerView.delegate = self
+            pickerView.dataSource = self
+            pickerView.selectRow(selectedId!, inComponent: 0, animated: false)
         }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return variants?.count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return variants?[row]
     }
 }
