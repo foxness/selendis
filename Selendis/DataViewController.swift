@@ -27,10 +27,10 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     func displayData(_ dataList: [DataItem]) {
         items = dataList
         
-        // I'm 99% sure 'weak' is not needed but better safe than sorry
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
+//        // I'm 99% sure 'weak' is not needed but better safe than sorry
+//        DispatchQueue.main.async { [weak self] in
+//            self?.tableView.reloadData()
+//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
@@ -51,6 +51,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
                 cell.item = item
                 
                 if let pictureItem = item as? PictureItem, let url = URL(string: pictureItem.url) {
+                    
                     downloader.downloadImage(url: url) { imageData in
                         if let imageData = imageData {
                             if let image = UIImage(data: imageData) {

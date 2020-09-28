@@ -12,7 +12,7 @@ class PictureItemCell: UITableViewCell, DataItemCell {
     static let HEIGHT = 160
     
     @IBOutlet weak var textView: UILabel!
-    @IBOutlet weak var pictureView: UIImageView!
+    @IBOutlet weak var pictureView: UIImageView?
     
     private var picture: UIImage?
     
@@ -26,17 +26,24 @@ class PictureItemCell: UITableViewCell, DataItemCell {
         }
     }
     
-    func willDisplayCell() {
-        print("will display; \(pictureView == nil ? "picview nil" : " ") \(picture == nil ? "pic nil" : "")")
-        
-        if let picture = picture, let pictureView = pictureView {
-            print("pic to imageview")
-            pictureView.image = picture
+    private func showPicture() {
+        DispatchQueue.main.async { [weak self] in
+            if let picture = self?.picture {
+                if let pictureView = self?.pictureView {
+                    pictureView.image = picture
+                } else {
+                    fatalError("PictureView not found")
+                }
+            }
         }
     }
     
+    func willDisplayCell() {
+        showPicture()
+    }
+    
     func setPicture(_ picture: UIImage) {
-        print("set picture; \(pictureView == nil ? "picview nil" : "")")
         self.picture = picture
+        showPicture()
     }
 }
