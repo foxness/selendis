@@ -28,11 +28,11 @@ class DataPresenter {
     }
     
     func viewDidLoad() {
-        dataService.getData { [weak self] rawData in // not sure if weak is needed but better safe than sorry
+        dataService.getData { [weak self] items in // not sure if weak is needed but better safe than sorry
             guard let self = self else { return }
             
-            if let rawData = rawData {
-                self.items = DataPresenter.rawDataToDataList(rawData)
+            if let items = items {
+                self.items = items
                 self.dataViewDelegate?.displayItems(self.items)
             } else {
                 print("I couldn't get data for some reason")
@@ -57,35 +57,5 @@ class DataPresenter {
     
     func downloadImage(url: URL, callback: @escaping BaseImageDownloader.ImageCallback) {
         downloader.downloadImage(url: url, callback: callback)
-    }
-    
-    private static func rawDataToItemDict(_ raw: RawDataPayload) -> [String: DataItem] {
-        let rawDict = raw.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
-        var itemDict = [String: DataItem]()
-        
-        for key in rawDict.keys {
-            let item: DataItem
-            
-            switch rawDict[key] {
-            case .text(let textItem):
-                item = TextItem(textItem: textItem)
-            case .picture(let pictureItem):
-                item = PictureItem(pictureItem: pictureItem)
-            case .selector(let selectorItem):
-                item = SelectorItem(selectorItem: selectorItem)
-            default:
-                fatalError("Unexpected data item type")
-            }
-            
-            itemDict[key] = item
-        }
-        
-        return itemDict
-    }
-    
-    private static func rawDataToDataList(_ raw: RawDataPayload) -> [DataItem] {
-        let itemDict = DataPresenter.rawDataToItemDict(raw)
-        let items = raw.viewIds.map { itemDict[$0]! }
-        return items
     }
 }
