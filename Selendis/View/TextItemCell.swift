@@ -20,6 +20,7 @@ class TextItemCell: UITableViewCell, DataItemCell {
             }
 
             textView.text = item.text
+            selectionStyle = .none
         }
     }
     

@@ -25,6 +25,7 @@ class PictureItemCell: UITableViewCell, DataItemCell {
             }
             
             textView.text = item.text
+            selectionStyle = .none
         }
     }
     

@@ -19,6 +19,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         
         tableView.dataSource = self
         tableView.delegate = self
+        
         presenter.attachView(self)
         presenter.viewDidLoad()
     }
