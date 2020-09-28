@@ -11,7 +11,6 @@ class PictureItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "pictureItemCell"
     static let HEIGHT = 160
     
-    @IBOutlet weak var textView: UILabel!
     @IBOutlet weak var pictureView: UIImageView?
     
     private var picture: UIImage?
@@ -24,7 +23,6 @@ class PictureItemCell: UITableViewCell, DataItemCell {
                 return
             }
             
-            textView.text = item.text
             selectionStyle = .none
         }
     }
