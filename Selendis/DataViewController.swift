@@ -22,27 +22,12 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         presenter.loadData()
     }
     
-    func displayData(_ data: RawDataPayload) {
-        print("I'm displaying data")
-        print(data)
+    func displayData(_ dataList: [DataItem]) {
+        items = dataList
         
-        let itemDict = data.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
-        
-        for id in data.viewIds {
-            let item: DataItem
-            
-            switch itemDict[id] {
-            case .text(let textItem):
-                item = TextItem(textItem: textItem)
-            case .picture(let pictureItem):
-                item = PictureItem(pictureItem: pictureItem)
-            case .selector(let selectorItem):
-                item = SelectorItem(selectorItem: selectorItem)
-            default:
-                fatalError("Unexpected data item type")
-            }
-            
-            items.append(item)
+        // I'm 99% sure 'weak' is not needed but better safe than sorry
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     

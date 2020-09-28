@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DataViewDelegate: AnyObject {
-    func displayData(_ data: RawDataPayload)
+    func displayData(_ dataList: [DataItem])
 }
