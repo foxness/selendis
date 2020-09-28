@@ -7,11 +7,15 @@
 
 import Foundation
 
-class DataService {
+protocol DataService {
+    func getData(callback: @escaping (RawDataPayload?) -> Void)
+}
+
+class NetworkDataService: DataService {
     private static let DATA_ENDPOINT = "https://pryaniky.com/static/json/sample.json"
     
     func getData(callback: @escaping (RawDataPayload?) -> Void) {
-        if let dataUrl = URL(string: DataService.DATA_ENDPOINT) {
+        if let dataUrl = URL(string: NetworkDataService.DATA_ENDPOINT) {
             Requests.get(url: dataUrl, completionHandler: { (data, response, error) in
                 if let error = error {
                     callback(nil)

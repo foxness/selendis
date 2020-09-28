@@ -12,7 +12,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     
     var items = [DataItem]()
     
-    private let presenter = DataPresenter(dataService: DataService()) // todo: dip abstract
+    private let presenter = DataPresenter(dataService: NetworkDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
