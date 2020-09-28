@@ -19,6 +19,9 @@
 		960CAB2A25214ACB00E5D22D /* DataViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */; };
 		960CAB2D25214B3A00E5D22D /* DataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2C25214B3A00E5D22D /* DataPresenter.swift */; };
 		960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2F2521559C00E5D22D /* DataViewModel.swift */; };
+		960F2F462521E1E000ECCDF5 /* TextItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F452521E1E000ECCDF5 /* TextItemCell.swift */; };
+		960F2F4A2521E54F00ECCDF5 /* PictureItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F492521E54F00ECCDF5 /* PictureItemCell.swift */; };
+		960F2F4D2521E5E200ECCDF5 /* SelectorItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F4C2521E5E200ECCDF5 /* SelectorItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewDelegate.swift; sourceTree = "<group>"; };
 		960CAB2C25214B3A00E5D22D /* DataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresenter.swift; sourceTree = "<group>"; };
 		960CAB2F2521559C00E5D22D /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		960F2F452521E1E000ECCDF5 /* TextItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemCell.swift; sourceTree = "<group>"; };
+		960F2F492521E54F00ECCDF5 /* PictureItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureItemCell.swift; sourceTree = "<group>"; };
+		960F2F4C2521E5E200ECCDF5 /* SelectorItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 				960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */,
 				960CAB2C25214B3A00E5D22D /* DataPresenter.swift */,
 				960CAB112521301700E5D22D /* Main.storyboard */,
+				960F2F492521E54F00ECCDF5 /* PictureItemCell.swift */,
+				960F2F4C2521E5E200ECCDF5 /* SelectorItemCell.swift */,
+				960F2F452521E1E000ECCDF5 /* TextItemCell.swift */,
 				960CAB142521301800E5D22D /* Assets.xcassets */,
 				960CAB162521301800E5D22D /* LaunchScreen.storyboard */,
 				960CAB192521301800E5D22D /* Info.plist */,
@@ -156,13 +165,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				960CAB2D25214B3A00E5D22D /* DataPresenter.swift in Sources */,
+				960F2F462521E1E000ECCDF5 /* TextItemCell.swift in Sources */,
 				960CAB102521301700E5D22D /* ViewController.swift in Sources */,
 				960CAB0C2521301700E5D22D /* AppDelegate.swift in Sources */,
 				960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */,
+				960F2F4D2521E5E200ECCDF5 /* SelectorItemCell.swift in Sources */,
 				960CAB2725213BDB00E5D22D /* DataPayload.swift in Sources */,
 				960CAB0E2521301700E5D22D /* SceneDelegate.swift in Sources */,
 				960CAB242521342800E5D22D /* Requests.swift in Sources */,
 				960CAB2A25214ACB00E5D22D /* DataViewDelegate.swift in Sources */,
+				960F2F4A2521E54F00ECCDF5 /* PictureItemCell.swift in Sources */,
 				960CAB21252132ED00E5D22D /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,9 +11,12 @@ class ViewController: UIViewController, DataViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     private let presenter = DataPresenter(dataService: DataService())
+    private let viewModel = DataViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = viewModel
         
         presenter.dataViewDelegate = self
         presenter.viewLoaded()
@@ -22,6 +25,8 @@ class ViewController: UIViewController, DataViewDelegate {
     func displayData(_ data: DataPayload) {
         print("I'm displaying data")
         print(data)
+        
+        viewModel.setData(data)
     }
 }
 

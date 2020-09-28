@@ -2,7 +2,7 @@
 //  DataItemCell.swift
 //  Selendis
 //
-//  Created by user179838 on 9/28/20.
+//  Created by foxness on 9/28/20.
 //
 
 import Foundation
@@ -65,7 +65,7 @@ class DataViewModelSelectorItem: DataViewModelItem {
 class DataViewModel: NSObject {
     var items = [DataViewModelItem]()
     
-    init(data: DataPayload) {
+    func setData(_ data: DataPayload) {
         let itemDict = data.dataPairs.reduce(into: [String: DataItem]()) { $0[$1.id] = $1.dataItem }
         
         for id in data.viewIds {
@@ -97,6 +97,25 @@ extension DataViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        fatalError("not implemented")
+        let item = items[indexPath.section]
+        switch item.type {
+        case .text:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TextItemCell.IDENTIFIER, for: indexPath) as? TextItemCell {
+                cell.item = item
+                return cell
+            }
+        case .picture:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PictureItemCell.IDENTIFIER, for: indexPath) as? PictureItemCell {
+                cell.item = item
+                return cell
+            }
+        case .selector:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SelectorItemCell.IDENTIFIER, for: indexPath) as? SelectorItemCell {
+                cell.item = item
+                return cell
+            }
+        }
+        
+        fatalError("Unknown item type")
     }
 }
