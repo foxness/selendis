@@ -10,9 +10,10 @@ import UIKit
 class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    var items = [DataItem]()
-    
     private let presenter = DataPresenter(dataService: NetworkDataService())
+    private let downloader = ImageDownloader()
+    
+    private var items = [DataItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,17 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         case .picture:
             if let cell = tableView.dequeueReusableCell(withIdentifier: PictureItemCell.IDENTIFIER, for: indexPath) as? PictureItemCell {
                 cell.item = item
+                
+                if let pictureItem = item as? PictureItem, let url = URL(string: pictureItem.url) {
+                    downloader.downloadImage(url: url) { imageData in
+                        if let imageData = imageData {
+                            if let image = UIImage(data: imageData) {
+                                cell.setPicture(image)
+                            }
+                        }
+                    }
+                }
+                
                 return cell
             }
             
@@ -59,6 +71,12 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         }
         
         fatalError("Unknown item type")
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let pictureCell = cell as? PictureItemCell {
+            pictureCell.willDisplayCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

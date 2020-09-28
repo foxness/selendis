@@ -35,6 +35,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BrK-wR-Fjn" secondAttribute="trailing" constant="20" symbolic="YES" id="1TX-uE-0af"/>
                                                 <constraint firstItem="BrK-wR-Fjn" firstAttribute="centerY" secondItem="IFt-Db-Yl5" secondAttribute="centerY" id="9ez-48-wCX"/>
                                                 <constraint firstItem="BrK-wR-Fjn" firstAttribute="leading" secondItem="IFt-Db-Yl5" secondAttribute="leadingMargin" constant="12" id="aS7-mL-oTd"/>
                                             </constraints>
@@ -56,13 +57,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u44-Ne-Hma">
+                                                    <rect key="frame" x="87" y="23" width="240" height="114"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="u44-Ne-Hma" firstAttribute="top" secondItem="x7T-hX-mpu" secondAttribute="topMargin" constant="12" id="6ha-cE-BrS"/>
+                                                <constraint firstItem="u44-Ne-Hma" firstAttribute="centerX" secondItem="x7T-hX-mpu" secondAttribute="centerX" id="NXa-P6-rov"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="u44-Ne-Hma" secondAttribute="bottom" constant="12" id="Oqm-cF-e5b"/>
+                                                <constraint firstItem="u44-Ne-Hma" firstAttribute="centerY" secondItem="x7T-hX-mpu" secondAttribute="centerY" id="c6E-tl-uAj"/>
                                                 <constraint firstItem="dKC-6T-fU5" firstAttribute="centerY" secondItem="x7T-hX-mpu" secondAttribute="centerY" id="dwm-eM-J9Y"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dKC-6T-fU5" secondAttribute="trailing" constant="20" symbolic="YES" id="l4G-kb-Oey"/>
+                                                <constraint firstItem="u44-Ne-Hma" firstAttribute="leading" secondItem="x7T-hX-mpu" secondAttribute="leadingMargin" constant="67" id="n33-2Q-Fvx"/>
                                                 <constraint firstItem="dKC-6T-fU5" firstAttribute="leading" secondItem="x7T-hX-mpu" secondAttribute="leadingMargin" constant="12" id="v12-jG-CVF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="pictureView" destination="u44-Ne-Hma" id="Pre-dM-0P1"/>
                                             <outlet property="textView" destination="dKC-6T-fU5" id="5Wb-3D-iu3"/>
                                         </connections>
                                     </tableViewCell>
