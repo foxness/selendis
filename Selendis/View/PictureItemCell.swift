@@ -9,7 +9,7 @@ import UIKit
 
 class PictureItemCell: UITableViewCell, DataItemCell {
     static let IDENTIFIER = "pictureItemCell"
-    static let HEIGHT = 160
+    static let HEIGHT = 200
     
     @IBOutlet weak var pictureView: UIImageView?
     
@@ -19,9 +19,7 @@ class PictureItemCell: UITableViewCell, DataItemCell {
     
     var item: DataItem? {
         didSet {
-            guard let item = item as? PictureItem else {
-                return
-            }
+            guard let item = item as? PictureItem else { return }
             
             selectionStyle = .none
         }

@@ -20,9 +20,7 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
     
     var item: DataItem? {
         didSet {
-            guard let item = item as? SelectorItem else {
-                return
-            }
+            guard let item = item as? SelectorItem else { return }
             
             selectedId = item.selectedId
             variants = item.variants
