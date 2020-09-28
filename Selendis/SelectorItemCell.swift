@@ -16,6 +16,8 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
     var selectedId: Int?
     var variants: [String]?
     
+    weak var selectorDelegate: SelectorDelegate?
+    
     var item: DataItem? {
         didSet {
             guard let item = item as? SelectorItem else {
@@ -41,5 +43,12 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return variants?[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let variants = variants else { return }
+        
+        let title = variants[row]
+        selectorDelegate?.itemSelected(itemTitle: title)
     }
 }

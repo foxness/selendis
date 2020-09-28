@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource, UITableViewDelegate, SelectorDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     private let presenter = DataPresenter(dataService: NetworkDataService(), downloader: ImageDownloader())
@@ -23,17 +23,36 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         presenter.viewDidLoad()
     }
     
+    func itemSelected(itemTitle: String) {
+        presenter.selectorItemChosen(itemTitle: itemTitle)
+    }
+    
     func displayItems(_ dataList: [DataItem]) {
         items = dataList
     }
     
     func displayMessage(_ message: String) {
         print(message)
+        
+        let alert = UIAlertController(title: "Hi", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { items.count }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        switch item.type {
+        case .text: presenter.textItemTapped(textItem: item as! TextItem)
+        case .picture: presenter.pictureItemTapped(pictureItem: item as! PictureItem)
+        default: break
+        }
+    }
     
     func downloadAndSetImage(for pictureCell: PictureItemCell, item: PictureItem) {
         guard !pictureCell.hasPicture else { return }
@@ -66,6 +85,7 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         case .selector:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SelectorItemCell.IDENTIFIER, for: indexPath) as? SelectorItemCell {
                 cell.item = item
+                cell.selectorDelegate = self
                 return cell
             }
         }

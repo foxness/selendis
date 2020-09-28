@@ -18,7 +18,7 @@ class TextItemCell: UITableViewCell, DataItemCell {
             guard let item = item as? TextItem else {
                 return
             }
-            
+
             textView.text = item.text
         }
     }

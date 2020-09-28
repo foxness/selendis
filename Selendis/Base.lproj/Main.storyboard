@@ -40,6 +40,7 @@
                                                 <constraint firstItem="BrK-wR-Fjn" firstAttribute="leading" secondItem="IFt-Db-Yl5" secondAttribute="leadingMargin" constant="12" id="aS7-mL-oTd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="textView" destination="BrK-wR-Fjn" id="dHp-L4-qpi"/>
                                         </connections>
@@ -105,7 +106,7 @@
                         <constraints>
                             <constraint firstItem="nc5-aT-tlI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2e4-vc-qGS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nc5-aT-tlI" secondAttribute="trailing" id="ENH-Eb-f6v"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nc5-aT-tlI" secondAttribute="bottom" id="KNp-Lv-Uc4"/>
+                            <constraint firstItem="nc5-aT-tlI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RGV-ef-rwK"/>
                             <constraint firstItem="nc5-aT-tlI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pcV-nu-YuN"/>
                         </constraints>
                     </view>
