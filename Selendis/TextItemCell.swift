@@ -12,9 +12,9 @@ class TextItemCell: UITableViewCell {
     
     @IBOutlet weak var textView: UILabel!
     
-    var item: DataViewModelItem? {
+    var item: DataItem? {
         didSet {
-            guard let item = item as? DataViewModelTextItem else {
+            guard let item = item as? TextItem else {
                 return
             }
             

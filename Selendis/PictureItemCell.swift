@@ -12,9 +12,9 @@ class PictureItemCell: UITableViewCell {
     
     @IBOutlet weak var textView: UILabel!
     
-    var item: DataViewModelItem? {
+    var item: DataItem? {
         didSet {
-            guard let item = item as? DataViewModelPictureItem else {
+            guard let item = item as? PictureItem else {
                 return
             }
             

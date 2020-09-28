@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		960CAB0C2521301700E5D22D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB0B2521301700E5D22D /* AppDelegate.swift */; };
 		960CAB0E2521301700E5D22D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB0D2521301700E5D22D /* SceneDelegate.swift */; };
-		960CAB102521301700E5D22D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB0F2521301700E5D22D /* ViewController.swift */; };
+		960CAB102521301700E5D22D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB0F2521301700E5D22D /* DataViewController.swift */; };
 		960CAB132521301700E5D22D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960CAB112521301700E5D22D /* Main.storyboard */; };
 		960CAB152521301800E5D22D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 960CAB142521301800E5D22D /* Assets.xcassets */; };
 		960CAB182521301800E5D22D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960CAB162521301800E5D22D /* LaunchScreen.storyboard */; };
@@ -18,7 +18,7 @@
 		960CAB2725213BDB00E5D22D /* RawDataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2625213BDB00E5D22D /* RawDataPayload.swift */; };
 		960CAB2A25214ACB00E5D22D /* DataViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */; };
 		960CAB2D25214B3A00E5D22D /* DataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2C25214B3A00E5D22D /* DataPresenter.swift */; };
-		960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2F2521559C00E5D22D /* DataViewModel.swift */; };
+		960CAB302521559C00E5D22D /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2F2521559C00E5D22D /* DataItem.swift */; };
 		960F2F462521E1E000ECCDF5 /* TextItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F452521E1E000ECCDF5 /* TextItemCell.swift */; };
 		960F2F4A2521E54F00ECCDF5 /* PictureItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F492521E54F00ECCDF5 /* PictureItemCell.swift */; };
 		960F2F4D2521E5E200ECCDF5 /* SelectorItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F2F4C2521E5E200ECCDF5 /* SelectorItemCell.swift */; };
@@ -28,7 +28,7 @@
 		960CAB082521301700E5D22D /* Selendis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Selendis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		960CAB0B2521301700E5D22D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		960CAB0D2521301700E5D22D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		960CAB0F2521301700E5D22D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		960CAB0F2521301700E5D22D /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		960CAB122521301700E5D22D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		960CAB142521301800E5D22D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		960CAB172521301800E5D22D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		960CAB2625213BDB00E5D22D /* RawDataPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDataPayload.swift; sourceTree = "<group>"; };
 		960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewDelegate.swift; sourceTree = "<group>"; };
 		960CAB2C25214B3A00E5D22D /* DataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresenter.swift; sourceTree = "<group>"; };
-		960CAB2F2521559C00E5D22D /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		960CAB2F2521559C00E5D22D /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		960F2F452521E1E000ECCDF5 /* TextItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemCell.swift; sourceTree = "<group>"; };
 		960F2F492521E54F00ECCDF5 /* PictureItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureItemCell.swift; sourceTree = "<group>"; };
 		960F2F4C2521E5E200ECCDF5 /* SelectorItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorItemCell.swift; sourceTree = "<group>"; };
@@ -76,9 +76,9 @@
 			children = (
 				960CAB0B2521301700E5D22D /* AppDelegate.swift */,
 				960CAB0D2521301700E5D22D /* SceneDelegate.swift */,
-				960CAB0F2521301700E5D22D /* ViewController.swift */,
+				960CAB0F2521301700E5D22D /* DataViewController.swift */,
 				960CAB20252132ED00E5D22D /* DataService.swift */,
-				960CAB2F2521559C00E5D22D /* DataViewModel.swift */,
+				960CAB2F2521559C00E5D22D /* DataItem.swift */,
 				960CAB232521342800E5D22D /* Requests.swift */,
 				960CAB2625213BDB00E5D22D /* RawDataPayload.swift */,
 				960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */,
@@ -166,9 +166,9 @@
 			files = (
 				960CAB2D25214B3A00E5D22D /* DataPresenter.swift in Sources */,
 				960F2F462521E1E000ECCDF5 /* TextItemCell.swift in Sources */,
-				960CAB102521301700E5D22D /* ViewController.swift in Sources */,
+				960CAB102521301700E5D22D /* DataViewController.swift in Sources */,
 				960CAB0C2521301700E5D22D /* AppDelegate.swift in Sources */,
-				960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */,
+				960CAB302521559C00E5D22D /* DataItem.swift in Sources */,
 				960F2F4D2521E5E200ECCDF5 /* SelectorItemCell.swift in Sources */,
 				960CAB2725213BDB00E5D22D /* RawDataPayload.swift in Sources */,
 				960CAB0E2521301700E5D22D /* SceneDelegate.swift in Sources */,

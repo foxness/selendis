@@ -1,71 +1,43 @@
 //
-//  DataViewModel.swift
+//  DataViewController.swift
 //  Selendis
 //
-//  Created by foxness on 9/28/20.
+//  Created by foxness on 9/27/20.
 //
 
-import Foundation
 import UIKit
 
-protocol DataViewModelItem {
-    var type: DataViewModelItemType { get }
-}
-
-enum DataViewModelItemType {
-    case text, picture, selector
-}
-
-class DataViewModelTextItem: DataViewModelItem {
-    var type: DataViewModelItemType { .text }
+class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
     
-    var text: String
+    var items = [DataItem]()
     
-    init(textItem: RawTextItem) {
-        text = textItem.text
+    private let presenter = DataPresenter(dataService: DataService()) // todo: dip abstract
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        presenter.dataViewDelegate = self
+        presenter.loadData()
     }
-}
-
-class DataViewModelPictureItem: DataViewModelItem {
-    var type: DataViewModelItemType { .picture }
     
-    var text: String
-    var url: String
-    
-    init(pictureItem: RawPictureItem) {
-        text = pictureItem.text
-        url = pictureItem.url
-    }
-}
-
-class DataViewModelSelectorItem: DataViewModelItem {
-    var type: DataViewModelItemType { .selector }
-    
-    var selectedId: Int
-    var variants: [RawSelectorVariant]
-    
-    init(selectorItem: RawSelectorItem) {
-        selectedId = selectorItem.selectedId
-        variants = selectorItem.variants
-    }
-}
-
-class DataViewModel: NSObject {
-    var items = [DataViewModelItem]()
-    
-    func setData(_ data: RawDataPayload) {
+    func displayData(_ data: RawDataPayload) {
+        print("I'm displaying data")
+        print(data)
+        
         let itemDict = data.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
         
         for id in data.viewIds {
-            let item: DataViewModelItem
+            let item: DataItem
             
             switch itemDict[id] {
             case .text(let textItem):
-                item = DataViewModelTextItem(textItem: textItem)
+                item = TextItem(textItem: textItem)
             case .picture(let pictureItem):
-                item = DataViewModelPictureItem(pictureItem: pictureItem)
+                item = PictureItem(pictureItem: pictureItem)
             case .selector(let selectorItem):
-                item = DataViewModelSelectorItem(selectorItem: selectorItem)
+                item = SelectorItem(selectorItem: selectorItem)
             default:
                 fatalError("Unexpected data item type")
             }
@@ -73,9 +45,7 @@ class DataViewModel: NSObject {
             items.append(item)
         }
     }
-}
-
-extension DataViewModel: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { items.count }
@@ -103,3 +73,4 @@ extension DataViewModel: UITableViewDataSource {
         fatalError("Unknown item type")
     }
 }
+

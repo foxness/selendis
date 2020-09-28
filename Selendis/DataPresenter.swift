@@ -15,7 +15,7 @@ class DataPresenter {
         self.dataService = dataService
     }
     
-    func viewLoaded() {
+    func loadData() {
         dataService.getData { [weak self] data in
             if let data = data {
                 self?.dataViewDelegate?.displayData(data)
