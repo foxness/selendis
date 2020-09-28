@@ -28,6 +28,8 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
             pickerView.delegate = self
             pickerView.dataSource = self
             pickerView.selectRow(selectedId!, inComponent: 0, animated: false)
+            
+            selectionStyle = .none
         }
     }
     

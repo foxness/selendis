@@ -26,8 +26,8 @@ class NetworkDataService: DataService {
                    let httpresponse = response as? HTTPURLResponse,
                    Requests.isResponseOk(httpresponse) {
                     
-                    if let jsonData = data {
-                        let payload = try! JSONDecoder().decode(RawDataPayload.self, from: jsonData)
+                    if let jsonData = data,
+                       let payload = try? JSONDecoder().decode(RawDataPayload.self, from: jsonData) {
                         callback(payload)
                     } else {
                         callback(nil)
