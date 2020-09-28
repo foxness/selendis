@@ -8,5 +8,7 @@
 import Foundation
 
 protocol DataViewDelegate: AnyObject {
-    func displayData(_ dataList: [DataItem])
+    func displayItems(_ items: [DataItem])
+    
+    func displayMessage(_ message: String)
 }

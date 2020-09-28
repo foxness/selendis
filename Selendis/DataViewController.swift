@@ -23,8 +23,12 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         presenter.viewDidLoad()
     }
     
-    func displayData(_ dataList: [DataItem]) {
+    func displayItems(_ dataList: [DataItem]) {
         items = dataList
+    }
+    
+    func displayMessage(_ message: String) {
+        print(message)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int { 1 }

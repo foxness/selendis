@@ -12,6 +12,8 @@ class DataPresenter {
     private weak var dataViewDelegate: DataViewDelegate?
     private let downloader: BaseImageDownloader
     
+    private var items = [DataItem]()
+    
     init(dataService: DataService, downloader: BaseImageDownloader) {
         self.dataService = dataService
         self.downloader = downloader
@@ -26,10 +28,12 @@ class DataPresenter {
     }
     
     func viewDidLoad() {
-        dataService.getData { [weak self] rawData in
+        dataService.getData { [weak self] rawData in // not sure if weak is needed but better safe than sorry
+            guard let self = self else { return }
+            
             if let rawData = rawData {
-                let dataList = DataPresenter.rawDataToDataList(rawData)
-                self?.dataViewDelegate?.displayData(dataList)
+                self.items = DataPresenter.rawDataToDataList(rawData)
+                self.dataViewDelegate?.displayItems(self.items)
             } else {
                 print("I couldn't get data for some reason")
             }
@@ -40,14 +44,14 @@ class DataPresenter {
         downloader.downloadImage(url: url, callback: callback)
     }
     
-    private static func rawDataToDataList(_ raw: RawDataPayload) -> [DataItem] {
-        var items = [DataItem]()
+    private static func rawDataToItemDict(_ raw: RawDataPayload) -> [String: DataItem] {
+        let rawDict = raw.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
+        var itemDict = [String: DataItem]()
         
-        let itemDict = raw.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
-        for id in raw.viewIds {
+        for key in rawDict.keys {
             let item: DataItem
             
-            switch itemDict[id] {
+            switch rawDict[key] {
             case .text(let textItem):
                 item = TextItem(textItem: textItem)
             case .picture(let pictureItem):
@@ -58,9 +62,15 @@ class DataPresenter {
                 fatalError("Unexpected data item type")
             }
             
-            items.append(item)
+            itemDict[key] = item
         }
         
+        return itemDict
+    }
+    
+    private static func rawDataToDataList(_ raw: RawDataPayload) -> [DataItem] {
+        let itemDict = DataPresenter.rawDataToItemDict(raw)
+        let items = raw.viewIds.map { itemDict[$0]! }
         return items
     }
 }
