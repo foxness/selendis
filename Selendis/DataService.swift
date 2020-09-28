@@ -24,9 +24,6 @@ class DataService {
                     
                     if let jsonData = data {
                         let payload = try! JSONDecoder().decode(DataPayload.self, from: jsonData)
-                        //let data =
-                        //let str = String(data: data, encoding: .utf8)
-                        //let str = String(decoding: data, as: UTF8.self)
                         callback(payload)
                     } else {
                         callback(nil)
