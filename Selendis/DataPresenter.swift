@@ -41,17 +41,17 @@ class DataPresenter {
     }
     
     func textItemTapped(textItem: TextItem) {
-        let message = "Вау! Ты нажал(а) на \(textItem.text)"
+        let message = "Ты нажал(а) на \(textItem.text)"
         dataViewDelegate?.displayMessage(message)
     }
     
     func pictureItemTapped(pictureItem: PictureItem) {
-        let message = "Вау! Ты нажал(а) на картинку \(pictureItem.text)"
+        let message = "Ты нажал(а) на картинку \(pictureItem.text)"
         dataViewDelegate?.displayMessage(message)
     }
     
     func selectorItemChosen(itemTitle: String) {
-        let message = "Вау! Ты выбрал(а) \(itemTitle)"
+        let message = "Ты выбрал(а) \(itemTitle)"
         dataViewDelegate?.displayMessage(message)
     }
     

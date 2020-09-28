@@ -34,10 +34,9 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     func displayMessage(_ message: String) {
         print(message)
         
-        let alert = UIAlertController(title: "Hi", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-        NSLog("The \"OK\" alert occured.")
-        }))
+        let alert = UIAlertController(title: "Вау!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil)
+        alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
