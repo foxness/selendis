@@ -22,7 +22,7 @@ class ViewController: UIViewController, DataViewDelegate {
         presenter.viewLoaded()
     }
     
-    func displayData(_ data: DataPayload) {
+    func displayData(_ data: RawDataPayload) {
         print("I'm displaying data")
         print(data)
         

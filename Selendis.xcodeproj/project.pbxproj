@@ -15,7 +15,7 @@
 		960CAB182521301800E5D22D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960CAB162521301800E5D22D /* LaunchScreen.storyboard */; };
 		960CAB21252132ED00E5D22D /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB20252132ED00E5D22D /* DataService.swift */; };
 		960CAB242521342800E5D22D /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB232521342800E5D22D /* Requests.swift */; };
-		960CAB2725213BDB00E5D22D /* DataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2625213BDB00E5D22D /* DataPayload.swift */; };
+		960CAB2725213BDB00E5D22D /* RawDataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2625213BDB00E5D22D /* RawDataPayload.swift */; };
 		960CAB2A25214ACB00E5D22D /* DataViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */; };
 		960CAB2D25214B3A00E5D22D /* DataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2C25214B3A00E5D22D /* DataPresenter.swift */; };
 		960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960CAB2F2521559C00E5D22D /* DataViewModel.swift */; };
@@ -35,7 +35,7 @@
 		960CAB192521301800E5D22D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		960CAB20252132ED00E5D22D /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		960CAB232521342800E5D22D /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
-		960CAB2625213BDB00E5D22D /* DataPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPayload.swift; sourceTree = "<group>"; };
+		960CAB2625213BDB00E5D22D /* RawDataPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDataPayload.swift; sourceTree = "<group>"; };
 		960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewDelegate.swift; sourceTree = "<group>"; };
 		960CAB2C25214B3A00E5D22D /* DataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresenter.swift; sourceTree = "<group>"; };
 		960CAB2F2521559C00E5D22D /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				960CAB20252132ED00E5D22D /* DataService.swift */,
 				960CAB2F2521559C00E5D22D /* DataViewModel.swift */,
 				960CAB232521342800E5D22D /* Requests.swift */,
-				960CAB2625213BDB00E5D22D /* DataPayload.swift */,
+				960CAB2625213BDB00E5D22D /* RawDataPayload.swift */,
 				960CAB2925214ACB00E5D22D /* DataViewDelegate.swift */,
 				960CAB2C25214B3A00E5D22D /* DataPresenter.swift */,
 				960CAB112521301700E5D22D /* Main.storyboard */,
@@ -170,7 +170,7 @@
 				960CAB0C2521301700E5D22D /* AppDelegate.swift in Sources */,
 				960CAB302521559C00E5D22D /* DataViewModel.swift in Sources */,
 				960F2F4D2521E5E200ECCDF5 /* SelectorItemCell.swift in Sources */,
-				960CAB2725213BDB00E5D22D /* DataPayload.swift in Sources */,
+				960CAB2725213BDB00E5D22D /* RawDataPayload.swift in Sources */,
 				960CAB0E2521301700E5D22D /* SceneDelegate.swift in Sources */,
 				960CAB242521342800E5D22D /* Requests.swift in Sources */,
 				960CAB2A25214ACB00E5D22D /* DataViewDelegate.swift in Sources */,

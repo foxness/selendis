@@ -1,5 +1,5 @@
 //
-//  DataItemCell.swift
+//  DataViewModel.swift
 //  Selendis
 //
 //  Created by foxness on 9/28/20.
@@ -10,12 +10,6 @@ import UIKit
 
 protocol DataViewModelItem {
     var type: DataViewModelItemType { get }
-    var rowCount: Int { get }
-    var sectionTitle: String { get }
-}
-
-extension DataViewModelItem {
-    var rowCount: Int { 1 }
 }
 
 enum DataViewModelItemType {
@@ -25,11 +19,9 @@ enum DataViewModelItemType {
 class DataViewModelTextItem: DataViewModelItem {
     var type: DataViewModelItemType { .text }
     
-    var sectionTitle: String { "Text Section" }
-    
     var text: String
     
-    init(textItem: TextItem) {
+    init(textItem: RawTextItem) {
         text = textItem.text
     }
 }
@@ -37,12 +29,10 @@ class DataViewModelTextItem: DataViewModelItem {
 class DataViewModelPictureItem: DataViewModelItem {
     var type: DataViewModelItemType { .picture }
     
-    var sectionTitle: String { "Picture Section" }
-    
     var text: String
     var url: String
     
-    init(pictureItem: PictureItem) {
+    init(pictureItem: RawPictureItem) {
         text = pictureItem.text
         url = pictureItem.url
     }
@@ -51,12 +41,10 @@ class DataViewModelPictureItem: DataViewModelItem {
 class DataViewModelSelectorItem: DataViewModelItem {
     var type: DataViewModelItemType { .selector }
     
-    var sectionTitle: String { "Selector Section" }
-    
     var selectedId: Int
-    var variants: [SelectorVariant]
+    var variants: [RawSelectorVariant]
     
-    init(selectorItem: SelectorItem) {
+    init(selectorItem: RawSelectorItem) {
         selectedId = selectorItem.selectedId
         variants = selectorItem.variants
     }
@@ -65,8 +53,8 @@ class DataViewModelSelectorItem: DataViewModelItem {
 class DataViewModel: NSObject {
     var items = [DataViewModelItem]()
     
-    func setData(_ data: DataPayload) {
-        let itemDict = data.dataPairs.reduce(into: [String: DataItem]()) { $0[$1.id] = $1.dataItem }
+    func setData(_ data: RawDataPayload) {
+        let itemDict = data.dataPairs.reduce(into: [String: RawDataItem]()) { $0[$1.id] = $1.dataItem }
         
         for id in data.viewIds {
             let item: DataViewModelItem
@@ -88,16 +76,12 @@ class DataViewModel: NSObject {
 }
 
 extension DataViewModel: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { 1 }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].rowCount
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { items.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.section]
+        let item = items[indexPath.row]
         switch item.type {
         case .text:
             if let cell = tableView.dequeueReusableCell(withIdentifier: TextItemCell.IDENTIFIER, for: indexPath) as? TextItemCell {
