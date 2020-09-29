@@ -14,7 +14,7 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
     @IBOutlet weak var pickerView: UIPickerView!
     
     var selectedId: Int?
-    var variants: [String]?
+    var options: [String]?
     
     weak var selectorDelegate: SelectorDelegate?
     
@@ -23,7 +23,7 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
             guard let item = item as? SelectorItem else { return }
             
             selectedId = item.selectedId
-            variants = item.variants
+            options = item.options
             
             pickerView.delegate = self
             pickerView.dataSource = self
@@ -38,17 +38,17 @@ class SelectorItemCell: UITableViewCell, DataItemCell, UIPickerViewDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return variants?.count ?? 0
+        return options?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return variants?[row]
+        return options?[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let variants = variants else { return }
+        guard let options = options else { return }
         
-        let title = variants[row]
+        let title = options[row]
         selectorDelegate?.itemSelected(itemTitle: title)
     }
 }

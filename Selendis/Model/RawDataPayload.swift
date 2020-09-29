@@ -74,14 +74,15 @@ struct RawPictureItem: Decodable {
 
 struct RawSelectorItem: Decodable {
     let selectedId: Int
-    let variants: [RawSelectorVariant]
+    let options: [RawSelectorOption]
 
     enum CodingKeys: String, CodingKey {
-        case selectedId, variants
+        case selectedId
+        case options = "variants"
     }
 }
 
-struct RawSelectorVariant: Decodable {
+struct RawSelectorOption: Decodable {
     let id: Int
     let text: String
 

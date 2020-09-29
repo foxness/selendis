@@ -42,10 +42,10 @@ class SelectorItem: DataItem {
     var type: DataItemType { .selector }
     
     var selectedId: Int
-    var variants: [String]
+    var options: [String]
     
     init(selectorItem: RawSelectorItem) {
         selectedId = selectorItem.selectedId
-        variants = selectorItem.variants.sorted { $0.id < $1.id }.map { $0.text }
+        options = selectorItem.options.sorted { $0.id < $1.id }.map { $0.text }
     }
 }
