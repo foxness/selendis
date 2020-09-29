@@ -16,21 +16,21 @@ enum DataItemType {
     case text, picture, selector
 }
 
-class TextItem: DataItem {
-    var type: DataItemType { .text }
+struct TextItem: DataItem {
+    let type: DataItemType = .text
     
-    var text: String
+    let text: String
     
     init(textItem: RawTextItem) {
         text = textItem.text
     }
 }
 
-class PictureItem: DataItem {
-    var type: DataItemType { .picture }
+struct PictureItem: DataItem {
+    let type: DataItemType = .picture
     
-    var text: String
-    var url: String
+    let text: String
+    let url: String
     
     init(pictureItem: RawPictureItem) {
         text = pictureItem.text
@@ -38,11 +38,11 @@ class PictureItem: DataItem {
     }
 }
 
-class SelectorItem: DataItem {
-    var type: DataItemType { .selector }
+struct SelectorItem: DataItem {
+    let type: DataItemType = .selector
     
-    var selectedId: Int
-    var options: [String]
+    let selectedId: Int
+    let options: [String]
     
     init(selectorItem: RawSelectorItem) {
         selectedId = selectorItem.selectedId
