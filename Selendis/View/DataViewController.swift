@@ -56,8 +56,8 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
         }
     }
     
+    // full disclosure: doesn't handle fast scrolling with slow network yet (I think) when there are a lot of images
     func downloadAndSetImage(for pictureCell: PictureItemCell, item: PictureItem) {
-        guard !pictureCell.hasPicture else { return }
         guard let url = URL(string: item.url) else { return }
         
         presenter.downloadImage(url: url) { imageData in

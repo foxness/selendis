@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol DataItem {
     var type: DataItemType { get }
