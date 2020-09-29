@@ -55,11 +55,11 @@ class ImageDownloader: BaseImageDownloader {
     }()
     
     private func addToQueue(download: Download) {
-        download.completionBlock = {
-            guard !download.isCancelled else { return }
-            
-            print("download task complete")
-        }
+//        download.completionBlock = {
+//            guard !download.isCancelled else { return }
+//
+//            print("download task complete")
+//        }
         
         downloadQueue.addOperation(download)
     }

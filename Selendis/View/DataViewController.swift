@@ -30,6 +30,10 @@ class DataViewController: UIViewController, DataViewDelegate, UITableViewDataSou
     
     func displayItems(_ dataList: [DataItem]) {
         items = dataList
+        
+        DispatchQueue.main.async { [unowned self] in
+            tableView.reloadData()
+        }
     }
     
     func displayMessage(_ message: String) {
