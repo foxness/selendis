@@ -15,31 +15,31 @@ class NetworkDataService: DataService {
     private static let DATA_ENDPOINT = "https://pryaniky.com/static/json/sample.json"
     
     func getData(callback: @escaping ([DataItem]?) -> Void) {
-        if let dataUrl = URL(string: NetworkDataService.DATA_ENDPOINT) {
-            Requests.get(url: dataUrl, completionHandler: { (data, response, error) in
-                if let error = error {
-                    callback(nil)
-                    return
-                }
+        guard let dataUrl = URL(string: NetworkDataService.DATA_ENDPOINT) else {
+            fatalError("Bad data endpoint")
+        }
+        
+        Requests.get(url: dataUrl) { (data, response, error) in
+            if let error = error {
+                callback(nil)
+                return
+            }
+            
+            if let response = response,
+               let httpresponse = response as? HTTPURLResponse,
+               Requests.isResponseOk(httpresponse) {
                 
-                if let response = response,
-                   let httpresponse = response as? HTTPURLResponse,
-                   Requests.isResponseOk(httpresponse) {
-                    
-                    if let jsonData = data,
-                       let payload = try? JSONDecoder().decode(RawDataPayload.self, from: jsonData) {
-                        let items = NetworkDataService.rawDataToDataList(payload)
-                        callback(items)
-                    } else {
-                        callback(nil)
-                    }
-                    
+                if let jsonData = data,
+                   let payload = try? JSONDecoder().decode(RawDataPayload.self, from: jsonData) {
+                    let items = NetworkDataService.rawDataToDataList(payload)
+                    callback(items)
                 } else {
                     callback(nil)
                 }
-            })
-        } else {
-            fatalError("Bad data endpoint")
+                
+            } else {
+                callback(nil)
+            }
         }
     }
     

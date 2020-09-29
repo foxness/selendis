@@ -25,7 +25,6 @@ struct RawDataPair: Decodable {
         case id = "name"
         case dataItem = "data"
     }
-    
 }
 
 enum RawDataItem: Decodable {
